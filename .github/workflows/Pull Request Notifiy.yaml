@@ -6,4 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking User Pull Request
-        run: echo "Started by ${{secrets.DEMO}}"
+        run: |
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' ${{secrets.SLACK_WEBHOOK_URL}}

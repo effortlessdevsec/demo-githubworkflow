@@ -1,10 +1,12 @@
-name: User Check 
+name: User Check
 run-name: User-Cont-check
 on: [pull_request]
 jobs:
- Check User Merge:
-  runs-on: ubuntu-latest
-   steps:
-    - name : Checking User Pull Request
-      run: echo started by "${{toJson(github.event.pull_request)}}"
- 
+  Check_User_Merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking User Pull Request
+        run: |
+          echo "Started by: ${{ github.event.pull_request.user.login }}"
+          echo "Pull Request Details (JSON):"
+          echo "${{ toJson(github.event.pull_request) }}"

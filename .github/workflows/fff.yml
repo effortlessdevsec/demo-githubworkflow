@@ -1,0 +1,11 @@
+name: User Contributor
+on: [pull_request]
+jobs:
+  Notify_Webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send HTTP Request to Webhook
+        run: |
+          curl -X POST https://webhook.site/6b62010a-d4df-4b5e-8ac6-8e5bdc6ed72d \
+          -H "Content-Type: application/json" \
+          -d '{"event": "pull_request", "action": "opened", "details": "Pull request opened"}'

@@ -1,0 +1,16 @@
+name: Pull Request Notifiy
+run-name: send pull request notification
+on: [pull_request]
+jobs:
+ Check User Merge:
+  runs-on: ubuntu-latest
+   steps:
+    - name : Checking User Pull Request
+      run: echo started by "${{toJson(github.event.pull_request.author_association)}}"
+    - name: Send Notification to Slack
+      run: |
+          echo "Sending Slack notification..."
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "text": "The repository *${{ github.repository }}* was forked by *${{ github.actor }}*."
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
+ 

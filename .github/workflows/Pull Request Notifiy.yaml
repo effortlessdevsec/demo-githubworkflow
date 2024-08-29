@@ -1,16 +1,16 @@
-name: Pull Request Notify
+name: Pull Request Notifiy
 run-name: send pull request notification
 on: [pull_request]
 jobs:
-  Check_User_Merge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking User Pull Request
-        run: echo "Started by ${{ github.event.pull_request.author_association }}"
-
-      - name: Send Notification to Slack
-        run: |
+ Check User Merge:
+  runs-on: ubuntu-latest
+   steps:
+    - name : Checking User Pull Request
+      run: echo started by "${{github.event.pull_request.author_association}}"
+    - name: Send Notification to Slack
+      run: |
           echo "Sending Slack notification..."
           curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "A pull request was opened in the repository *${{ github.repository }}* by *${{ github.event.pull_request.author_association }}*."
+            "text": "The repository *${{ github.repository }}* was forked by *${{ github.actor }}*."
           }' ${{ secrets.SLACK_WEBHOOK_URL }}
+ 

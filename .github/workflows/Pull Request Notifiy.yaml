@@ -1,6 +1,6 @@
 name: Pull Request Notify
 run-name: Send pull request notification
-on: workflow_dispatch
+on: pull_request
 jobs:
   Check_User_Merge:
     runs-on: ubuntu-latest

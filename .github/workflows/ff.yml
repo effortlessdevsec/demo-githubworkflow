@@ -1,0 +1,9 @@
+name: User Contributor
+run-name: User-Cont-contributor
+on: [pull_request]
+jobs:
+  Check_User_Contributor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking User Pull Request
+        run: echo "hello contributor"

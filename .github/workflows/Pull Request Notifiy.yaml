@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking User Pull Request
-        run: echo "Started by: ${{ github.event.pull_request.user.login }}"
+        run: echo "Started by ${{ github.event.pull_request.author_association }}"
 
       - name: Send Notification to Slack
         run: |
           echo "Sending Slack notification..."
           curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "A pull request was opened in the repository *${{ github.repository }}* by *${{ github.actor }}*."
+            "text": "A pull request was opened in the repository *${{ github.repository }}* by *${{ github.event.pull_request.author_association }}*."
           }' ${{ secrets.SLACK_WEBHOOK_URL }}

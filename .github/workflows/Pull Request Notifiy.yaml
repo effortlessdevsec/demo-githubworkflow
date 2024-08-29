@@ -10,5 +10,5 @@ jobs:
      - name: Send Notification to Slack
        run: |
           echo "Sending Slack notification..."
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' ${{secrets.SLACK_WEBHOOK_URL}}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":" on *${{ github.repository }}* pull requested by  *${{ github.actor}}* that role is  ${{github.event.pull_request.author_association}}  "}' ${{secrets.SLACK_WEBHOOK_URL}}
  

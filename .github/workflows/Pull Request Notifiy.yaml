@@ -1,16 +1,9 @@
 name: Pull Request Notify
 run-name: Send pull request notification
-on: [pull_request]
+on: workflow_dispatch
 jobs:
   Check_User_Merge:
     runs-on: ubuntu-latest
     steps:
       - name: Checking User Pull Request
-        run: echo "Started by-> ${{ github.event.pull_request.author_association }}"
-
-      - name: Send Notification to Slack
-        run: |
-          echo "Sending Slack notification..."
-          curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "A pull request was opened in the repository *${{ github.repository }}* by *${{ github.event.pull_request.author_association }}*."
-          }' ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: echo "Started by ${{secrets.DEMO}}"

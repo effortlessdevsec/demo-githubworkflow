@@ -5,6 +5,10 @@ jobs:
   Check_User_Merge:
     runs-on: ubuntu-latest
     steps:
-      - name: Checking User Pull Request
-        run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' ${{secrets.SLACK_WEBHOOK_URL}}
+     - name : Checking User Pull Request
+       run: echo started by "${{github.event.pull_request.author_association}}"
+     - name: Send Notification to Slack
+       run: |
+          echo "Sending Slack notification..."
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' ${{secrets.SLACK_WEBHOOK_URL}}
+ 
